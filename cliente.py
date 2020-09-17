@@ -39,36 +39,49 @@ class Cliente:
     """
 
     def __init__(self, nome, telefone, email):
-        pass
+        self.__nome = nome
+        self.telefone = telefone
+        self.email = email
 
     @property
     def nome(self):
-        """Property do nome do cliente"""
-        pass
+        return self.__nome
 
     @property
     def telefone(self):
-        """Property do telefone do cliente"""
-        pass
+        return self.__telefone
 
     @telefone.setter
     def telefone(self, novo_telefone):
-        """
-        Setter do telefone do cliente, caso não receba um número,
-        levanta um TypeError
-        """
-        pass
+        if type(novo_telefone) == int:
+            self.__telefone = novo_telefone
+        else:
+            raise TypeError("...")
+            """
+            Setter do telefone do cliente, caso não receba um número,
+            levanta um TypeError
+            """
+            pass
 
     @property
     def email(self):
-        """Property do email do cliente"""
-        pass
+        return self.__email
 
     @email.setter
     def email(self, novo_email):
+        if type(novo_email) != str:
+            raise TypeError("...")
+        elif novo_email.find("@") == -1:
+            pass
+        else:
+            self.__email = novo_email
         """
         Setter do email do cliente, lançamento de exceções:
         levanta um TypeError caso não receba uma string; e
         levanta um ValueError caso não receba um email válido (contendo o @)
-        """
-        pass
+        """        
+
+
+Cliente = Cliente('Mauricio',11970152606,'mauwebjc@gmail.com')
+#Cliente.email = 11212
+print(Cliente.email)
