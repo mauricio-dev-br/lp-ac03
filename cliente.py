@@ -56,7 +56,7 @@ class Cliente:
         if type(novo_telefone) == int:
             self.__telefone = novo_telefone
         else:
-            raise TypeError("...")
+            raise TypeError()
             """
             Setter do telefone do cliente, caso não receba um número,
             levanta um TypeError
@@ -70,18 +70,13 @@ class Cliente:
     @email.setter
     def email(self, novo_email):
         if type(novo_email) != str:
-            raise TypeError("...")
+            raise TypeError()
         elif novo_email.find("@") == -1:
-            pass
+            raise ValueError()
         else:
             self.__email = novo_email
         """
         Setter do email do cliente, lançamento de exceções:
         levanta um TypeError caso não receba uma string; e
         levanta um ValueError caso não receba um email válido (contendo o @)
-        """        
-
-
-Cliente = Cliente('Mauricio',11970152606,'mauwebjc@gmail.com')
-#Cliente.email = 11212
-print(Cliente.email)
+        """  

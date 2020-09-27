@@ -8,7 +8,7 @@
 # Adicione aqui a importação dos módulos que julgar necesários, ex:
 # import modulo_exemplo
 
-
+from conta import Conta
 class Banco:
     """
     Classe que modela o banco
@@ -47,4 +47,22 @@ class Banco:
         caso o saldo inicial seja negativo levanta um ValueError (a conta não é aberta).
         DICA: O parâmetro clientes será uma lista com instâncias do tipo Cliente.
     """
-    pass
+
+
+    def __init__(self, nome):
+        self.__nome = nome
+        self.__contas = []       
+
+    @property
+    def nome(self):
+        return self.__nome
+
+    @property
+    def contas(self):
+        return self.__contas
+
+    def abre_conta(self, clientes, saldo):
+        if(saldo < 0):
+            raise ValueError()
+        else:
+            self.__contas.append(Conta(clientes, (len(self.__contas)+1), saldo))

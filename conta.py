@@ -65,4 +65,35 @@ class Conta:
     * Método tirar_extrato da classe Conta
         retorna uma lista com as operações (Tuplas) executadas na Conta
     """
-    pass
+
+    def __init__(self, clientes, numero_conta, saldo_inicial):
+        self.__clientes = clientes
+        self.__numero = numero_conta
+        self.__saldo = saldo_inicial
+        self.__extrato = [('saldo inicial', saldo_inicial)]
+
+    @property
+    def clientes(self):
+        return self.__clientes
+
+    @property
+    def numero(self):
+        return self.__numero
+
+    @property
+    def saldo(self):
+        return self.__saldo
+
+    def sacar(self, saque):        
+        if(self.__saldo < saque):
+            raise ValueError
+        else:
+            self.__saldo -= saque
+            self.__extrato.append(('saque', saque))
+
+    def depositar(self, deposito):
+        self.__extrato.append(('deposito', deposito))
+        self.__saldo += deposito
+
+    def tirar_extrato(self):
+        return self.__extrato
